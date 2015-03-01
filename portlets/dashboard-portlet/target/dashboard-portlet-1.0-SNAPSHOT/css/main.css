@@ -1,0 +1,19 @@
+.lfr-search-container {
+    margin-top: 0em;
+}
+
+.aui .table th, .aui .table td {
+    text-align: center;
+}
+
+.search-container-action-col{
+	width: 100px;
+}
+
+.search-container-credit-col{
+	width: 60px;
+}
+
+.display-txt{
+	margin-top: -19px;
+}

@@ -1,0 +1,37 @@
+@import url(base.css);
+
+@import url(application.css);
+
+@import url(layout.css);
+
+@import url(dockbar.css);
+
+@import url(navigation.css);
+
+@import url(portlet.css);
+
+@import url(extras.css);
+
+@import url(custom.css);
+
+@import url(jquery.dataTables.css);
+
+@import url(documenter_style.css);
+
+@import url(prettify.css);
+
+@import url(smart-forms.css);
+
+@import url(smart-themes/blue.css);
+
+@import url(smart-themes/red.css);
+
+@import url(font-awesome.min.css);
+
+@import url(pokerp-custom.css);
+
+@import url(carousel.css);
+
+@import url(bootstrap-grid.css);
+
+@import url(jquery-ui.css);

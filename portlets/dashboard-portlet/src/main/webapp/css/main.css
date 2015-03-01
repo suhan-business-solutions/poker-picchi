@@ -1,0 +1,30 @@
+.lfr-search-container {
+	margin-top: 0em;
+}
+
+.aui .table th, .aui .table td {
+	text-align: center;
+}
+
+.search-container-action-col {
+	width: 100px;
+}
+
+.search-container-credit-col {
+	width: 60px;
+}
+
+.display-txt {
+	margin-top: -19px;
+}
+
+.control-check-box {
+	margin-top: 3px;
+}
+
+.control-number-box{
+	text-align:right; 
+	color:#FBA051; 
+	font-weight:400; 
+	background-color: white;
+}

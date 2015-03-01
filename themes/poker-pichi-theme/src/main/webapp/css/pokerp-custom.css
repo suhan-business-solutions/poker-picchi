@@ -1,0 +1,44 @@
+html {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* links-display web content styling */
+
+.links-display-header {
+	font-size: 18px;
+	font-weight: bold;
+	padding-bottom: 10px;
+}
+.links-display-description {
+	font-size: 14px;
+	padding-bottom: 5px;
+}
+.links-display-section-header {
+	font-weight: bold;
+	font-size: 16px;
+	padding-bottom: 5px;
+}
+.links-display-links {
+	font-size: 14px;
+	padding-left: 10px;
+}
+
+.aui .breadcrumb {
+	background-color: #d3d3d3;
+}
+
+nav#breadcrumbs {
+	margin-bottom: 20px;
+}
+
+.aui .portlet-topper {
+	background-color: #a9a9a9;
+}
+
+
+/* Smart Forms Overrides */
+
+.smart-forms .select > select {
+	padding: 4px 6px;
+}
