@@ -24,8 +24,8 @@ import com.liferay.portal.kernel.json.JSONFactoryUtil;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.portlet.LiferayWindowState;
-import com.sbs.pokerp.dashboard.dto.BuyIn;
-import com.sbs.pokerp.dashboard.dto.BuyOut;
+import com.sbs.pokerp.dashboard.dto.BuyInDTO;
+import com.sbs.pokerp.dashboard.dto.BuyOutDTO;
 
 /**
  * @author jpnaidu
@@ -42,7 +42,7 @@ public class TransactionsController{
 	    throws PortalException, SystemException {
 	_log.debug( "TransactionsController.showBuyIn()******************************" );
 
-	BuyIn buyIn = new BuyIn();
+	BuyInDTO buyIn = new BuyInDTO();
 	buyIn.setPlayerName( "Naidu Jitta" );
 	buyIn.setPlayerId( 10231 );
 	buyIn.setTableId( 1234 );
@@ -61,7 +61,7 @@ public class TransactionsController{
 	_log.debug( "TransactionsController.showBuyOut()******************************" );
 	ModelAndView mav = new ModelAndView();
 
-	BuyOut buyOut = new BuyOut();
+	BuyOutDTO buyOut = new BuyOutDTO();
 	buyOut.setPlayerName( "Naidu Jitta" );
 	buyOut.setPlayerId( 10231 );
 	buyOut.setTableId( 1234 );
@@ -73,7 +73,7 @@ public class TransactionsController{
     }
 
     @ActionMapping( params = { "action=add-buy-in" } )
-    public void addBuyIn( @ModelAttribute( "buyIn" ) BuyIn buyIn, BindingResult result, ActionRequest actionRequest, ActionResponse response,
+    public void addBuyIn( @ModelAttribute( "buyIn" ) BuyInDTO buyIn, BindingResult result, ActionRequest actionRequest, ActionResponse response,
 	    SessionStatus sessionStatus ) throws WindowStateException {
 
 	_log.debug( "******************************TransactionsController.addBuyIn()******************************" );
@@ -85,7 +85,7 @@ public class TransactionsController{
     }
 
     @ActionMapping( params = { "action=buy-out" } )
-    public void buyOut( @ModelAttribute( "buyOut" ) BuyOut buyOut, BindingResult result, ActionRequest actionRequest, ActionResponse response,
+    public void buyOut( @ModelAttribute( "buyOut" ) BuyOutDTO buyOut, BindingResult result, ActionRequest actionRequest, ActionResponse response,
 	    SessionStatus sessionStatus ) throws WindowStateException {
 
 	_log.debug( "******************************TransactionsController.buyOut()******************************" );
@@ -96,9 +96,9 @@ public class TransactionsController{
     }
 
     @ModelAttribute( "buyIn" )
-    public BuyIn getCommandObject() {
+    public BuyInDTO getCommandObject() {
 
 	_log.info( "Creating Buy In command object" );
-	return new BuyIn();
+	return new BuyInDTO();
     }
 }

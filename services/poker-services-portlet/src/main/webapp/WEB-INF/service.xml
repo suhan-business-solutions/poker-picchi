@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.1.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_1_0.dtd">
+<service-builder package-path="com.sbs.pokerp">
+	<author>jpnaidu</author>
+	<namespace>pokerp</namespace>
+    <entity name="PokerTable" remote-service="false" local-service="true" human-name="PokerTable">
+        <column name="gameId" db-name="gameId" type="long" primary="true"/>
+        <column name="orgId" db-name="orgId" type="long"/>
+        <column name="tableName" db-name="tableName" type="String"/>
+        <column name="playerCount" db-name="playerCount" type="int"/>
+        <column name="status" db-name="status" type="int"/>
+        <column name="notes" db-name="notes" type="String"/>
+        
+        <column name="createdBy" db-name="createdBy" type="String"/>
+        <column name="createdDate" db-name="createdDate" type="Date"/>
+        <column name="updatedBy" db-name="updatedBy" type="String"/>
+        <column name="updatedDate" db-name="updatedDate" type="Date"/>
+        <column name="buyIns" type="Collection" entity="BuyIn" mapping-key="gameId"/>
+        <column name="buyOuts" type="Collection" entity="BuyOut" mapping-key="gameId"/>
+        <column name="playerStats" type="Collection" entity="PokerTablePlayer" mapping-key="gameId"/>
+        <order by="asc">
+		    <order-column name="gameId" />
+		    <order-column name="createdDate" />
+		</order>
+    </entity>
+    <entity name="BuyIn" local-service="true" remote-service="false" human-name="BuyIn">
+        <column name="transactionId" db-name="transactionId" type="long" primary="true"/>
+        <column name="gameId" db-name="gameId" type="long"/>
+        <column name="playerId" db-name="playerId" type="long"/>
+        <column name="amount" db-name="amount" type="double"/>
+        <column name="credit" db-name="credit" type="boolean"/>
+        
+        <column name="createdBy" db-name="createdBy" type="String"/>
+        <column name="createdDate" db-name="createdDate" type="Date"/>
+        <column name="updatedBy" db-name="updatedBy" type="String"/>
+        <column name="updatedDate" db-name="updatedDate" type="Date"/>
+        
+        <order by="asc">
+		    <order-column name="createdDate" />
+		</order>
+		<finder return-type="Collection" name="gameIdAndPlayerId">
+        	<finder-column name="gameId"/>
+        	<finder-column name="playerId"/>
+        </finder>
+        <finder return-type="Collection" name="gameId">
+        	<finder-column name="gameId"/>
+        </finder>
+    </entity>
+    <entity name="BuyOut" local-service="true" remote-service="false" human-name="BuyOut">
+        <column name="transactionId" db-name="transactionId" type="long" primary="true"/>
+        <column name="gameId" db-name="gameId" type="long"/>
+        <column name="playerId" db-name="playerId" type="long"/>
+        <column name="amount" db-name="amount" type="double"/>
+        
+        <column name="createdBy" db-name="createdBy" type="String"/>
+        <column name="createdDate" db-name="createdDate" type="Date"/>
+        <column name="updatedBy" db-name="updatedBy" type="String"/>
+        <column name="updatedDate" db-name="updatedDate" type="Date"/>
+        
+        <order by="asc">
+		    <order-column name="createdDate" />
+		</order>
+		<finder return-type="Collection" name="gameIdAndPlayerId">
+        	<finder-column name="gameId"/>
+        	<finder-column name="playerId"/>
+        </finder>
+        <finder return-type="Collection" name="gameId">
+        	<finder-column name="gameId"/>
+        </finder>
+    </entity>
+    <entity name="PokerTablePlayer" local-service="true" remote-service="false" human-name="PokerTablePlayer">
+        <column name="gameId" db-name="gameId" type="long" primary="true"/>
+        <column name="playerId" db-name="playerId" type="long" primary="true"/>
+        <column name="timeJoined" db-name="timeJoined" type="Date"/>
+        <column name="timeLeft" db-name="timeLeft" type="Date"/>
+        <column name="amountWon" db-name="amountWon" type="double"/>
+        
+        <column name="createdBy" db-name="createdBy" type="String"/>
+        <column name="createdDate" db-name="createdDate" type="Date"/>
+        <column name="updatedBy" db-name="updatedBy" type="String"/>
+        <column name="updatedDate" db-name="updatedDate" type="Date"/>
+        
+        <order by="asc">
+		    <order-column name="createdDate" />
+		</order>
+		<finder return-type="PokerTablePlayer" name="gameIdAndPlayerId">
+        	<finder-column name="gameId"/>
+        	<finder-column name="playerId"/>
+        </finder>
+        <finder return-type="Collection" name="gameId">
+        	<finder-column name="gameId"/>
+        </finder>
+        <finder return-type="Collection" name="playerId">
+        	<finder-column name="playerId"/>
+        </finder>
+    </entity>
+ 
+    <exceptions>
+        <exception>PokerDBSystem</exception>
+    </exceptions>
+</service-builder>

@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false" auto-import="false">
+	<import class="com.sbs.pokerp.model.BuyIn" />
+	<import class="com.sbs.pokerp.model.BuyOut" />
+	<import class="com.sbs.pokerp.model.PokerTable" />
+	<import class="com.sbs.pokerp.model.PokerTablePlayer" />
+	<class name="com.sbs.pokerp.model.impl.BuyInImpl" table="pokerp_BuyIn">
+		<cache usage="read-write" />
+		<id name="transactionId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="gameId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="playerId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="amount" type="com.liferay.portal.dao.orm.hibernate.DoubleType" />
+		<property name="credit" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
+		<property name="createdBy" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="createdDate" type="org.hibernate.type.TimestampType" />
+		<property name="updatedBy" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="updatedDate" type="org.hibernate.type.TimestampType" />
+	</class>
+	<class name="com.sbs.pokerp.model.impl.BuyOutImpl" table="pokerp_BuyOut">
+		<cache usage="read-write" />
+		<id name="transactionId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="gameId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="playerId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="amount" type="com.liferay.portal.dao.orm.hibernate.DoubleType" />
+		<property name="createdBy" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="createdDate" type="org.hibernate.type.TimestampType" />
+		<property name="updatedBy" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="updatedDate" type="org.hibernate.type.TimestampType" />
+	</class>
+	<class name="com.sbs.pokerp.model.impl.PokerTableImpl" table="pokerp_PokerTable">
+		<cache usage="read-write" />
+		<id name="gameId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="orgId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="tableName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="playerCount" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="status" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="notes" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="createdBy" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="createdDate" type="org.hibernate.type.TimestampType" />
+		<property name="updatedBy" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="updatedDate" type="org.hibernate.type.TimestampType" />
+	</class>
+	<class name="com.sbs.pokerp.model.impl.PokerTablePlayerImpl" table="pokerp_PokerTablePlayer">
+		<cache usage="read-write" />
+		<composite-id name="primaryKey" class="com.sbs.pokerp.service.persistence.PokerTablePlayerPK">
+			<key-property name="gameId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+			<key-property name="playerId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		</composite-id>
+		<property name="timeJoined" type="org.hibernate.type.TimestampType" />
+		<property name="timeLeft" type="org.hibernate.type.TimestampType" />
+		<property name="amountWon" type="com.liferay.portal.dao.orm.hibernate.DoubleType" />
+		<property name="createdBy" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="createdDate" type="org.hibernate.type.TimestampType" />
+		<property name="updatedBy" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="updatedDate" type="org.hibernate.type.TimestampType" />
+	</class>
+</hibernate-mapping>

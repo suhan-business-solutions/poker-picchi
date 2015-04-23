@@ -3,7 +3,7 @@
 <portlet:defineObjects />
 
 <portlet:actionURL var="createTable">
-	<portlet:param name="action" value="createTable"/>
+	<portlet:param name="action" value="createTable" />
 </portlet:actionURL>
 
 <div class="taglib-header ">
@@ -30,10 +30,12 @@
 				<div class="control-group">
 					<label class="control-label" for="selectbasic">Default Buy In</label>
 					<div class="controls">
-						<select id="selectbasic" name="selectbasic">
-							<option>$10</option>
-							<option>$20</option>
-						</select>
+						<div class="input-prepend input-append">
+							<span class="add-on">$</span>
+							<input class="span2" id="amount" name="amount" style="text-align:right; color:#FBA051; font-weight:400; background-color: white;" maxlength="2" readonly />
+							<span class="add-on">.00</span>
+						</div>
+						<div id="slider" style="width: 215px;margin-top: 10px;"></div>
 					</div>
 				</div>
 			</div>
@@ -44,18 +46,11 @@
 
 					<liferay-ui:search-container-row className="com.liferay.portal.model.User" modelVar="user" keyProperty="userId">
 						<liferay-ui:search-container-column-text name="Player Name">
-	           		${user.getFullName()}
-	           </liferay-ui:search-container-column-text>
+	           				${user.getFullName()}
+	           			</liferay-ui:search-container-column-text>
 						<liferay-ui:search-container-column-text name="Credit ?" cssClass="search-container-credit-col">
 							<input type="checkbox" />
 						</liferay-ui:search-container-column-text>
-						<liferay-ui:search-container-column-text cssClass="search-container-action-col">
-							<liferay-ui:icon-menu>
-								<liferay-ui:icon iconCssClass="icon-plus-sign" url="http://www.gmail.com" label="true" message="Buy In" />
-								<liferay-ui:icon iconCssClass="icon-minus-sign" url="http://www.gmail.com" label="true" message="Buy Out" />
-							</liferay-ui:icon-menu>
-						</liferay-ui:search-container-column-text>
-
 					</liferay-ui:search-container-row>
 
 					<liferay-ui:search-iterator />
@@ -72,4 +67,19 @@
 		</aui:button-row>
 	</div>
 </form>
-
+<script type="text/javascript">
+	$(function() {
+		$("#slider").slider({
+			value : 10,
+			min : 0,
+			max : 50,
+			step : 10,
+			slide : function(event, ui) {
+				$("#amount").val( ui.value);
+			}
+		});
+		$("#amount").val( $("#slider").slider("value"));
+		
+		$("#amount").ForceNumericOnly();
+	});
+</script>

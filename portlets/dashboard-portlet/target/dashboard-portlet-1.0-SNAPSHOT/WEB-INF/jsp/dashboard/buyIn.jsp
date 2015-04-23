@@ -1,53 +1,58 @@
 <%@ include file="../common/init.jspf"%>
 
-<h2>This is Buy In View</h2>
-<form name="rollTable" method="post" action="${ createTable}" class="form-horizontal">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-6">
-				<div class="control-group">
-					<label class="control-label" for="textinput">Player Name</label>
-					<div class="controls">
-						<input id="textinput" name="textinput" type="text" placeholder="Enter Player Name" />
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label" for="textinput">Amount</label>
-					<div class="controls">
-						<input id="amount" name="amount" type="text" placeholder="Enter Buy In Amount" />
-						<input type="text" name="stepper" id="stepper4" class="gui-input">
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="control-group">
-					<label class="control-label" for="credit">Credit ?</label>
-					<div class="controls">
-						<input id="credit" name="credit" type="checkbox" />
-					</div>
-				</div>
-			</div>
+<portlet:actionURL var="addBuyIn">
+	<portlet:param name="action" value="add-buy-in" />
+</portlet:actionURL>
+
+<form:form method="post" action="${ addBuyIn}" commandName="buyIn" class="form-horizontal">
+	<form:hidden path="tableId" />
+	<form:hidden path="playerId" />
+	<div class="control-group">
+		<label class="control-label" for="textinput">Player Name</label>
+		<div class="controls">
+			<form:input id="textinput" path="playerName" readonly="true"/>
 		</div>
 	</div>
+	<div class="control-group">
+		<label class="control-label" for="amount">Amount</label>
+		<div class="controls">
+			<div class="input-prepend input-append">
+				<span class="add-on">$</span> 
+				<form:input class="span2" id="amount" path="amount" style="text-align:right; color:#FBA051; font-weight:400; background-color: white;" maxlength="2" readonly="true"/> 
+				<span class="add-on">.00</span>
+			</div>
+			<div id="slider" style="width: 215px;"></div>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="credit">Credit ?</label>
+		<div class="controls control-check-box">
+			<form:checkbox id="credit" path="credit" />
+		</div>
+	</div>
+
 	<!-- Button -->
 	<div align="center">
 		<aui:button-row>
-			<aui:button cssClass="btn btn-primary btn-large" type="submit" icon="icon-plus" iconAlign="left" value="Add Buy In"/>
+			<aui:button cssClass="btn btn-primary btn-large" type="submit" icon="icon-plus" iconAlign="left" value="Add Buy In" />
 			<aui:button cssClass="btn btn-warning btn-large" type="reset" icon="icon-trash" iconAlign="left" value="Clear" />
 		</aui:button-row>
 	</div>
-</form>
+</form:form>
 
 <script type="text/javascript">
-    $(function() {
-    
-	$('#stepper4').stepper({ 
-                UI: false,
-                allowWheel :false,
-                limit: [10, 50],
-                wheel_step: 10,
-                arrow_step: 10             
+	$(function() {
+		$("#slider").slider({
+			value : 10,
+			min : 0,
+			max : 50,
+			step : 10,
+			slide : function(event, ui) {
+				$("#amount").val( ui.value);
+			}
+		});
+		$("#amount").val( $("#slider").slider("value"));
+		
+		$("#amount").ForceNumericOnly();
 	});
-            
-    });
 </script>

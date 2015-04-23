@@ -10,4 +10,7 @@
 <%@ page import="com.liferay.portal.kernel.dao.search.RowChecker"%>
 <%@ page import="com.liferay.portal.kernel.portlet.LiferayWindowState"%>
 
+<portlet:defineObjects />
+<liferay-theme:defineObjects />
+
 

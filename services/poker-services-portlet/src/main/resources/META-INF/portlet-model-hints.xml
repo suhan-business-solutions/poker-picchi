@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.sbs.pokerp.model.BuyIn">
+		<field name="transactionId" type="long" />
+		<field name="gameId" type="long" />
+		<field name="playerId" type="long" />
+		<field name="amount" type="double" />
+		<field name="credit" type="boolean" />
+		<field name="createdBy" type="String" />
+		<field name="createdDate" type="Date" />
+		<field name="updatedBy" type="String" />
+		<field name="updatedDate" type="Date" />
+	</model>
+	<model name="com.sbs.pokerp.model.BuyOut">
+		<field name="transactionId" type="long" />
+		<field name="gameId" type="long" />
+		<field name="playerId" type="long" />
+		<field name="amount" type="double" />
+		<field name="createdBy" type="String" />
+		<field name="createdDate" type="Date" />
+		<field name="updatedBy" type="String" />
+		<field name="updatedDate" type="Date" />
+	</model>
+	<model name="com.sbs.pokerp.model.PokerTable">
+		<field name="gameId" type="long" />
+		<field name="orgId" type="long" />
+		<field name="tableName" type="String" />
+		<field name="playerCount" type="int" />
+		<field name="status" type="int" />
+		<field name="notes" type="String" />
+		<field name="createdBy" type="String" />
+		<field name="createdDate" type="Date" />
+		<field name="updatedBy" type="String" />
+		<field name="updatedDate" type="Date" />
+	</model>
+	<model name="com.sbs.pokerp.model.PokerTablePlayer">
+		<field name="gameId" type="long" />
+		<field name="playerId" type="long" />
+		<field name="timeJoined" type="Date" />
+		<field name="timeLeft" type="Date" />
+		<field name="amountWon" type="double" />
+		<field name="createdBy" type="String" />
+		<field name="createdDate" type="Date" />
+		<field name="updatedBy" type="String" />
+		<field name="updatedDate" type="Date" />
+	</model>
+</model-hints>

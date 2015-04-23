@@ -1,6 +1,5 @@
 <%@ include file="../common/init.jspf"%>
 
-<portlet:defineObjects />
 
 <div class="taglib-header ">
 	<h3 class="header-title" align="center">
@@ -111,6 +110,7 @@
  <div align="center">
      <aui:button-row>
     	<aui:button cssClass="btn btn-primary btn-large" type="submit" icon="icon-user" iconAlign="left" value="Add Player" useDialog="true"/>
+    	<!-- This button need to be hidden while the game is in progress -->
     	<aui:button cssClass="btn btn-danger btn-large" icon="icon-credit" iconAlign="left" value="Roll Out" />
     </aui:button-row>
   </div>
@@ -129,7 +129,8 @@ AUI().use('aui-base', 'aui-io-plugin-deprecated', 'liferay-util-window',
 					//cssClass: 'yourCSSclassName',
 					modal: true,
 					resizable: false,
-					width: 475
+					width: 475,
+					height:330
 				}
 			}
 		).plug(

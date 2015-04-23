@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="com.sbs.pokerp.service.BuyInLocalService" class="com.sbs.pokerp.service.impl.BuyInLocalServiceImpl" />
+	<bean id="com.sbs.pokerp.service.persistence.BuyInPersistence" class="com.sbs.pokerp.service.persistence.BuyInPersistenceImpl" parent="basePersistence" />
+	<bean id="com.sbs.pokerp.service.BuyOutLocalService" class="com.sbs.pokerp.service.impl.BuyOutLocalServiceImpl" />
+	<bean id="com.sbs.pokerp.service.persistence.BuyOutPersistence" class="com.sbs.pokerp.service.persistence.BuyOutPersistenceImpl" parent="basePersistence" />
+	<bean id="com.sbs.pokerp.service.PokerTableLocalService" class="com.sbs.pokerp.service.impl.PokerTableLocalServiceImpl" />
+	<bean id="com.sbs.pokerp.service.persistence.PokerTablePersistence" class="com.sbs.pokerp.service.persistence.PokerTablePersistenceImpl" parent="basePersistence" />
+	<bean id="com.sbs.pokerp.service.PokerTablePlayerLocalService" class="com.sbs.pokerp.service.impl.PokerTablePlayerLocalServiceImpl" />
+	<bean id="com.sbs.pokerp.service.persistence.PokerTablePlayerPersistence" class="com.sbs.pokerp.service.persistence.PokerTablePlayerPersistenceImpl" parent="basePersistence" />
+</beans>
